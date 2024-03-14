@@ -1,0 +1,129 @@
+{
+      "category": [
+        {
+          "id": 0,
+          "name": "Все"
+        },
+        {
+          "id": 1,
+          "name": "Мясные"
+        },
+        {
+          "id": 2,
+          "name": "Вегетаринская"
+        },
+        {
+          "id": 3,
+          "name": "Гриль"
+        },
+        {
+          "id": 4,
+          "name": "Острые"
+        },
+        {
+          "id": 5,
+          "name": "Закрытые"
+        }
+      ],
+      "items": [
+        {
+          "material": [
+            {
+              "id": 1,
+              "name": "тонкое"
+            },
+            {
+              "id": 2,
+              "name": "традиционное"
+            }
+          ],
+          "radius": [
+            {
+              "id": 1,
+              "name": "26 см.",
+              "price": 395
+            },
+            {
+              "id": 2,
+              "name": "30 см.",
+              "price": 520
+            },
+            {
+              "id": 3,
+              "name": "40 см.",
+              "price": 700
+            }
+          ],
+          "baseprice": 395,
+          "name": "Чизбургер пицца",
+          "category": 1,
+          "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+        },
+        {
+          "material": [
+            {
+              "id": 1,
+              "name": "тонкое"
+            },
+            {
+              "id": 2,
+              "name": "традиционное"
+            }
+          ],
+          "radius": [
+            {
+              "id": 1,
+              "name": "26 см.",
+              "price": 420
+            },
+            {
+              "id": 2,
+              "name": "30 см.",
+              "price": 540
+            },
+            {
+              "id": 3,
+              "name": "40 см.",
+              "price": 720
+            }
+          ],
+          "baseprice": 420,
+          "name": "Диабло пицца",
+          "category": 4,
+          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D6149EB101D8727573088FA2EFF.jpg"
+        },
+        {
+          "material": [
+            {
+              "id": 1,
+              "name": "тонкое"
+            },
+            {
+              "id": 2,
+              "name": "традиционное"
+            }
+          ],
+          "radius": [
+            {
+              "id": 1,
+              "name": "26 см.",
+              "price": 350
+            },
+            {
+              "id": 2,
+              "name": "30 см.",
+              "price": 500
+            },
+            {
+              "id": 3,
+              "name": "40 см.",
+              "price": 670
+            }
+          ],
+          "baseprice": 350,
+          "name": "4 сыра пицца",
+          "category": 2,
+          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D612A1C13CBBFCC286C332D7762.jpg"
+        }
+      ]
+}
