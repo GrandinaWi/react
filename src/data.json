@@ -57,7 +57,8 @@
           "baseprice": 395,
           "name": "Чизбургер пицца",
           "category": 1,
-          "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+          "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
+          "popular": 100
         },
         {
           "material": [
@@ -90,7 +91,8 @@
           "baseprice": 420,
           "name": "Диабло пицца",
           "category": 4,
-          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D6149EB101D8727573088FA2EFF.jpg"
+          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D6149EB101D8727573088FA2EFF.jpg",
+          "popular": 152
         },
         {
           "material": [
@@ -123,7 +125,8 @@
           "baseprice": 350,
           "name": "4 сыра пицца",
           "category": 2,
-          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D612A1C13CBBFCC286C332D7762.jpg"
+          "img": "https://media.dodostatic.net/image/r:292x292/11EE7D612A1C13CBBFCC286C332D7762.jpg",
+          "popular": 120
         }
       ]
 }
