@@ -54,6 +54,12 @@ $duration: 0.15s;
           border-radius: 5px;
           cursor: auto;
         }
+        &.disable{
+          opacity: 0.5;
+          &:hover{
+            background: rgb(255,255,255,0.7);
+          }
+        }
       }
     }
   }

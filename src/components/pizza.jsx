@@ -1,24 +1,39 @@
+import {useEffect, useState} from "react";
+import PropTypes from "prop-types";
+
+
 function Pizza(obj){
+    const [type,setType]=useState(0)
+    const [radiusPick,setRadius]=useState(0);
+    function clickType(index){
+        setType(index);
+    }
+    function clickRaduis(index){
+        setRadius(index)
+    }
+
+
+
     return (
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src={obj.img}
+                src={obj.imageUrl}
                 alt="Pizza"
             />
             <h4 className="pizza-block__title">{obj.name}</h4>
             <div className="pizza-block__selector">
                 <ul>
                     {
-                        obj.material.map((material,index)=> (
-                            <li key={index} className={index==0 ? 'active' : ''}>{material.name}.</li>
+                        obj.types.map((material,index)=> (
+                            <li key={index} onClick={()=>clickType(index)} className={index==type ? 'active' : 'disable'}>{ material===0 ? 'тонкое' : 'традиционное'}.</li>
                         ))
                     }
                 </ul>
                 <ul>
                     {
-                        obj.radius.map((radius,index)=> (
-                            <li key={index} className={index==0 ? 'active' : ''}>{radius.name}.</li>
+                        obj.sizes.map((radius,index)=> (
+                            <li key={index} onClick={()=>clickRaduis(index)} className={index==radiusPick ? 'active' : 'disable'}>{radius} см.</li>
                         ))
                     }
 
@@ -26,7 +41,7 @@ function Pizza(obj){
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от {obj.baseprice} ₽</div>
+                <div className="pizza-block__price">от {obj.price} ₽</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"
@@ -40,12 +55,24 @@ function Pizza(obj){
                             fill="white"
                         />
                     </svg>
-                    <span>Добавить</span>
+                    <span >Добавить</span>
                     <i>2</i>
                 </div>
             </div>
         </div>
     )
 }
-
+Pizza.propTypes = {
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    price: PropTypes.number,
+    types: PropTypes.arrayOf(PropTypes.number),
+    sizes: PropTypes.arrayOf(PropTypes.number),
+};
+Pizza.defaultProps={
+  name: '-----',
+  price: 0,
+    types: [],
+    sizes: [],
+};
 export default Pizza;

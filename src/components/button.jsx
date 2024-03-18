@@ -1,6 +1,6 @@
 function Basket({price,count}){
     return (
-        <a href="/cart.html" className="button button--cart">
+        <a to='/cart' className="button button--cart">
             <span>{price} ₽</span>
             <div className="button__delimiter"></div>
             <svg
