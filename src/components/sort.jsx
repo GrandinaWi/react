@@ -1,6 +1,16 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import store from "../redux/store";
+import {setSort} from "../redux/actions/filters";
+import {useSelector} from "react-redux";
 const sortList=['популярности','цене','алфавиту'];
-function Sort({changeSort,sort,openModal,picksort}){
+const sortList2=[
+        {name:'популярности',type:'number'},
+        {name:'цене',type:'price'},
+        {name:'алфавит',type:'alpabet'},
+        ];
+
+function Sort({changeSort,sort,openModal,picksort,name,}){
+    const sortIndex=useSelector(state=>(state.filters.sortBy));
 
     return (
         <div className="sort">
@@ -19,13 +29,20 @@ function Sort({changeSort,sort,openModal,picksort}){
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span>популярности</span>
+                <span>{name}</span>
             </div>
             <div className={`sort__popup ${sort ? '' : 'disable'}`}>
                 <ul>
                     {
-                        sortList.map((obj,index)=> (
-                            <li key={index} data-id={index} onClick={()=>changeSort(index)} className={picksort==index ? 'active' : ''}>{obj}</li>
+                        sortList2.map((obj,index)=> (
+                            <li
+                                key={index}
+                                data-id={index}
+                                onClick={()=>{changeSort(index,obj.name);store.dispatch(setSort(index))}}
+                                className={sortIndex==index ? 'active' : ''}
+                            >
+                                {obj.name}
+                            </li>
                         ))
                     }
 

@@ -1,8 +1,14 @@
 import Basket from "./button";
 import logo from "../assets/img/pizza-logo.svg";
 import {Link} from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 
-function Header({price,count}){
+
+
+function Header(){
+    const price=useSelector(state => state.count.price);
+    const count=useSelector(state => state.count.count);
+    console.log('Это цена',price)
     return (
         <div className="header">
             <div className="container">

@@ -1,26 +1,27 @@
-import {useEffect, useState} from "react";
-import data from '../data.json';
-import pizza from '../pizza.json';
+import {useEffect, useState,useCallback} from "react";
+// компоненты товаров и сортировки
 import Pizza from "../components/pizza";
 import Sort from "../components/sort";
-import Basket from "../components/button";
-import logo from '../assets/img/pizza-logo.svg';
+// редьюсер фильтра
+import {filters} from "../redux/reducers/filters";
+import { useSelector, useDispatch } from 'react-redux';
 
-console.log(pizza)
+
 function Home(){
-    const [price,setPrice]=useState(0);
-    const [count,setCount]=useState(0)
-    const [collections,setCollections]=useState([]);
-    const [category,setCattegory]=useState([]);
+
+    const items = useSelector(state => state.pizzas.items); // Используем часть состояния из стора
+    const categories = useSelector(state => state.filters.category); // Используем часть состояния из стора
+    const sortStatus=useSelector(state=>state.filters.sortBy);
+    // состояние указывающий выбранную категорию
     const [categoryName,setCategoryName]=useState('Все');
+    // выбор  категории
     const [changeTab,setChangeTab]=useState(0);
+    // состояние выбора сортировка и  ее название, и открытие и закрытие модального окна
     const [sort,setSort] = useState(false);
     const [picksort,setPickSort]=useState(0);
+    const [sortName,setSortName]=useState('популярности');
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        setCollections(pizza.pizzas);
-        setCattegory(data.category)
-    }, []);
     function onChangeTab(index,name){
         setChangeTab(index)
         setCategoryName(name)
@@ -32,8 +33,8 @@ function Home(){
             setSort(true)
         }
     }
-    function changeSort(index){
-        setPickSort(index)
+    function changeSort(index,name){
+        setSortName(name);
     }
     return (
         <div className="container">
@@ -41,30 +42,37 @@ function Home(){
                 <div className="categories">
                     <ul>
                         {
-                            data.category.map((obj, index) => (
+                            categories.map((obj, index) => (
                                 <li onClick={() => onChangeTab(index, obj.name)} key={index}
                                     className={index == changeTab ? 'active' : ''}>{obj.name}</li>
                             ))
                         }
                     </ul>
                 </div>
-                <Sort changeSort={changeSort} sort={sort} openModal={openModal} picksort={picksort}/>
+                <Sort
+                    name={sortName}
+                    changeSort={changeSort}
+                    sort={sort}
+                    openModal={openModal}
+                    picksort={picksort}
+                />
+
             </div>
             <h2 className="content__title">{categoryName} пиццы</h2>
             <div className="content__items">
                 {
-                    collections.filter((obj) => {
+                    items.filter((obj) => {
                         if (changeTab == 0) {
                             return true
                         } else {
                             return obj.category === changeTab;
                         }
                     }).sort((a, b) => {
-                        if (picksort === 0) {
+                        if (sortStatus === 0) {
                             return b.rating - a.rating; // Сортировка по популярности от большего к меньшему
-                        } else if (picksort === 1) {
+                        } else if (sortStatus === 1) {
                             return a.price - b.price; // Сортировка по цене от меньшего к большему
-                        } else if (picksort === 2) {
+                        } else if (sortStatus === 2) {
                             return a.name.localeCompare(b.name); // Сортировка по алфавиту от A до Z
                         } else {
                             return 0; // Без сортировки
